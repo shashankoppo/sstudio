@@ -1,6 +1,6 @@
 # Suraj Studio - Premium Photography Portfolio
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/262020b7-ad97-42c0-8d6e-da19c3215089/deploy-status)](https://app.netlify.com/projects/sstudios/deploys)
+
 
 A high-end, minimalistic, and cinematic portfolio website for Suraj Studio. Features include a sophisticated Cream and Espresso Brown editorial theme, centered brand logo, smooth GSAP animations, and Lenis smooth scrolling.
 
