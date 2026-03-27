@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Exit on any error
+set -e
+
+echo "🚀 Starting Deployment on Ubuntu..."
+
+# 1. Update system
+echo "📦 Updating system packages..."
+sudo apt-get update && sudo apt-get upgrade -y
+
+# 2. Install Docker if not installed
+if ! command -v docker &> /dev/null
+then
+    echo "🐳 Installing Docker..."
+    sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    sudo usermod -aG docker $USER
+    echo "✅ Docker installed successfully."
+fi
+
+# 3. Install Docker Compose if not installed
+if ! command -v docker-compose &> /dev/null
+then
+    echo "🐳 Installing Docker Compose..."
+    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    echo "✅ Docker Compose installed successfully."
+fi
+
+# 4. Build and Start the Application
+echo "🏗️ Building and pulling containers..."
+sudo docker-compose down
+sudo docker-compose build --no-cache
+sudo docker-compose up -d
+
+echo "🎉 Deployment Complete! Your site is running on port 80."

@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy API requests to your Ubuntu server (Change YOUR_UBUNTU_IP to actual domain/IP)
+# Removing this or setting it up depends if you want to host both frontend & backend on Ubuntu instead!
+[[redirects]]
+  from = "/api/*"
+  to = "http://YOUR_UBUNTU_IP:5000/api/:splat"
+  status = 200
+  force = true
+
+# Catch-all redirect for React Router (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
