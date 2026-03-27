@@ -52,12 +52,41 @@ export const Contact = ({ onNavigate }: ContactProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      // Submit lead to API
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          service: formData.service,
+          message: `${formData.message}${formData.eventDate ? `\n\nEvent Date: ${formData.eventDate}` : ''}`,
+          status: 'new'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit lead');
+      }
+
+      // Show success message
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', phone: '', email: '', city: '', service: '', eventDate: '', message: '' });
+
+      // Hide success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+      setIsSubmitting(false);
+      alert('Failed to submit your inquiry. Please try again or contact us directly.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
