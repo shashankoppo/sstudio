@@ -1,27 +1,17 @@
-import { useState } from 'react';
+
+import { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { useIntersectionObserver } from '../hooks/useScrollAnimation';
 import { cities } from '../data/cities';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface ContactProps {
   onNavigate: (page: string) => void;
 }
 
-const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
-  const { isVisible, setElement } = useIntersectionObserver({ threshold: 0.1 });
-  return (
-    <div
-      ref={setElement}
-      className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-};
-
 export const Contact = ({ onNavigate }: ContactProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -40,52 +30,53 @@ export const Contact = ({ onNavigate }: ContactProps) => {
     'Destination Weddings',
     'Cinematic Videography',
     'Commercial Photography',
-    'Corporate Photography',
     'Fashion & Portfolio Shoots',
-    'Event Photography',
-    'Baby & Maternity Shoots',
     'Drone Photography',
-    'Documentary Films',
-    'Album Designing'
+    'Documentary Films'
   ];
+
+  useGSAP(() => {
+    gsap.from('.contact-header h1', {
+      y: 100,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power4.out',
+      delay: 0.2
+    });
+    gsap.from('.contact-main', {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+      delay: 0.5
+    });
+  }, { scope: containerRef });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // Submit lead to API
       const response = await fetch('/api/leads', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: formData.city,
-          service: formData.service,
+          ...formData,
           message: `${formData.message}${formData.eventDate ? `\n\nEvent Date: ${formData.eventDate}` : ''}`,
           status: 'new'
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit lead');
-      }
+      if (!response.ok) throw new Error('Failed to submit');
 
-      // Show success message
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', phone: '', email: '', city: '', service: '', eventDate: '', message: '' });
-
-      // Hide success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
-      console.error('Error submitting lead:', error);
-      setIsSubmitting(false);
-      alert('Failed to submit your inquiry. Please try again or contact us directly.');
+       console.error(error);
+       setIsSubmitting(false);
+       alert('Something went wrong. Please connect with us directly via phone.');
     }
   };
 
@@ -94,273 +85,207 @@ export const Contact = ({ onNavigate }: ContactProps) => {
   };
 
   return (
-    <>
-      <SEO
-        title="Contact Us - Get Your Photography Quote in 60 Seconds | Suraj Studio"
-        description="Contact Suraj Studio for professional photography services. Located in Jabalpur, serving PAN India. Call +91 98765 43210 or fill the form for instant quote."
-        keywords="contact suraj studio, photography quote, book photographer jabalpur, wedding photography inquiry, professional photographer india"
+    <div ref={containerRef} className="bg-[#FDFBFA] text-[#3E2723] selection:bg-[#3E2723] selection:text-[#FDFBFA] pt-32 pb-40 min-h-screen">
+      <SEO 
+        title="Contact Us | Suraj Studio" 
+        description="Book a consultation with our studio to begin your journey of high-end visual storytelling." 
       />
 
-      <div className="min-h-screen bg-black text-white pt-24">
-        <section className="relative py-20 px-4 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent"></div>
-          <div className="max-w-7xl mx-auto relative z-10">
-            <AnimatedSection>
-              <div className="text-center mb-16">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Get Your <span className="text-amber-500">Free Quote</span></h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">Fill the form below and get your personalized quote in just 60 seconds</p>
+      <div className="max-w-7xl mx-auto px-6">
+        <header className="contact-header text-center mb-32 border-b border-[#3E2723]/10 pb-24">
+          <p className="text-[10px] tracking-[0.5em] uppercase text-[#6D4C41] mb-10 font-bold opacity-60">The Inquiry Space</p>
+          <h1 className="text-6xl md:text-[8rem] font-serif leading-[0.9] tracking-tighter mb-12">
+            Connect <br/><span className="italic font-light">With Us</span>
+          </h1>
+          <p className="text-[#6D4C41] text-xl font-light italic opacity-80">Reserved for serious visionaries.</p>
+        </header>
+
+        <div className="contact-main grid grid-cols-1 lg:grid-cols-12 gap-24">
+          {/* Form Side */}
+          <div className="lg:col-span-7">
+            {isSubmitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center p-12 border border-[#3E2723]/10 bg-white">
+                <div className="w-24 h-24 bg-[#3E2723] rounded-full flex items-center justify-center mb-10">
+                  <CheckCircle className="w-12 h-12 text-[#FDFBFA]" strokeWidth={1} />
+                </div>
+                <h3 className="text-4xl font-serif mb-6 text-[#3E2723]">Received With Gratitude.</h3>
+                <p className="text-[#6D4C41] text-lg mb-10 font-light">We will review your inquiry with meticulous care and touch base shortly.</p>
+                <div className="flex flex-col gap-6 items-center">
+                  <button onClick={() => setIsSubmitted(false)} className="text-[#3E2723] font-bold tracking-[0.2em] uppercase text-[10px] border-b border-[#3E2723] pb-2">New Inquiry</button>
+                  <button onClick={() => onNavigate('home')} className="text-[#6D4C41] font-bold tracking-[0.2em] uppercase text-[10px] hover:text-[#3E2723] transition-colors">Return to Home</button>
+                </div>
               </div>
-            </AnimatedSection>
-          </div>
-        </section>
-
-        <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-12">
-              <div className="lg:col-span-3">
-                <AnimatedSection>
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 border border-gray-700">
-                    {isSubmitted ? (
-                      <div className="text-center py-12">
-                        <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                          <CheckCircle className="w-12 h-12 text-white" />
-                        </div>
-                        <h3 className="text-3xl font-bold mb-4">Thank You!</h3>
-                        <p className="text-gray-300 text-lg mb-6">Your inquiry has been submitted successfully. Our team will contact you shortly.</p>
-                        <button
-                          onClick={() => setIsSubmitted(false)}
-                          className="bg-gradient-to-r from-amber-500 to-amber-600 text-black px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300"
-                        >
-                          Submit Another Inquiry
-                        </button>
-                      </div>
-                    ) : (
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <label className="block text-sm font-semibold mb-2 text-gray-300">Full Name *</label>
-                            <input
-                              type="text"
-                              name="name"
-                              value={formData.name}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                              placeholder="Your name"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-semibold mb-2 text-gray-300">Phone Number *</label>
-                            <input
-                              type="tel"
-                              name="phone"
-                              value={formData.phone}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                              placeholder="+91 98765 43210"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-semibold mb-2 text-gray-300">Email Address *</label>
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                            placeholder="your@email.com"
-                          />
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <label className="block text-sm font-semibold mb-2 text-gray-300">City *</label>
-                            <select
-                              name="city"
-                              value={formData.city}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                            >
-                              <option value="">Select city</option>
-                              {cities.map((city) => (
-                                <option key={city.name} value={city.name}>
-                                  {city.name}, {city.state}
-                                </option>
-                              ))}
-                              <option value="other">Other</option>
-                            </select>
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-semibold mb-2 text-gray-300">Service Required *</label>
-                            <select
-                              name="service"
-                              value={formData.service}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                            >
-                              <option value="">Select service</option>
-                              {services.map((service) => (
-                                <option key={service} value={service}>
-                                  {service}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-semibold mb-2 text-gray-300">Event Date</label>
-                          <input
-                            type="date"
-                            name="eventDate"
-                            value={formData.eventDate}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-semibold mb-2 text-gray-300">Additional Details</label>
-                          <textarea
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows={4}
-                            className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-amber-500 transition-colors text-white resize-none"
-                            placeholder="Tell us more about your requirements..."
-                          ></textarea>
-                        </div>
-
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-black px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-6 h-6 border-3 border-black border-t-transparent rounded-full animate-spin"></div>
-                              Submitting...
-                            </>
-                          ) : (
-                            <>
-                              Get Your Quote
-                              <Send className="w-5 h-5" />
-                            </>
-                          )}
-                        </button>
-                      </form>
-                    )}
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-12">
+                <div className="grid md:grid-cols-2 gap-10">
+                  <div className="space-y-3">
+                    <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Your Name</label>
+                    <input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="E.g. Isabella Rossi"
+                      className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-xl font-serif"
+                    />
                   </div>
-                </AnimatedSection>
-              </div>
-
-              <div className="lg:col-span-2 space-y-6">
-                <AnimatedSection delay={200}>
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
-                    <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                    <div className="space-y-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <MapPin className="w-6 h-6 text-amber-500" />
-                        </div>
-                        <div>
-                          <div className="font-semibold mb-1">Address</div>
-                          <div className="text-gray-400 text-sm">Jabalpur, Madhya Pradesh, India</div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Phone className="w-6 h-6 text-amber-500" />
-                        </div>
-                        <div>
-                          <div className="font-semibold mb-1">Phone</div>
-                          <a href="tel:+918827917220" className="text-gray-400 text-sm hover:text-amber-500 transition-colors">
-                            +91 88279 17220
-                          </a>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Mail className="w-6 h-6 text-amber-500" />
-                        </div>
-                        <div>
-                          <div className="font-semibold mb-1">Email</div>
-                          <a href="mailto:surajstudios999@gmail.com" className="text-gray-400 text-sm hover:text-amber-500 transition-colors">
-                            surajstudios999@gmail.com
-                          </a>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Clock className="w-6 h-6 text-amber-500" />
-                        </div>
-                        <div>
-                          <div className="font-semibold mb-1">Business Hours</div>
-                          <div className="text-gray-400 text-sm">Mon - Sat: 10:00 AM - 7:00 PM, Sunday: By Appointment</div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Phone Number</label>
+                    <input
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="+91 000 000 000"
+                      className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-xl font-serif"
+                    />
                   </div>
-                </AnimatedSection>
+                </div>
 
-                <AnimatedSection delay={300}>
-                  <div className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl p-8">
-                    <h3 className="text-2xl font-bold text-black mb-4">Quick Contact</h3>
-                    <p className="text-black/80 mb-6">Chat with us on WhatsApp for instant support.</p>
-                    <button
-                      onClick={() => {
-                        const phone = '918827917220';
-                        const message = 'Hi! I would like to inquire about your photography services and get a free quote.';
-                        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-                      }}
-                      className="w-full bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-900 transition-all duration-300"
+                <div className="space-y-3">
+                  <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Email Address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="E.g. Isabella@studio.com"
+                    className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-xl font-serif"
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-10">
+                  <div className="space-y-3">
+                    <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">City / Location</label>
+                    <select
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-lg font-serif appearance-none"
                     >
-                      Chat on WhatsApp
-                    </button>
+                      <option value="">Select location</option>
+                      {cities.map((city) => <option key={city.name} value={city.name}>{city.name}</option>)}
+                      <option value="other">Other / Destination</option>
+                    </select>
                   </div>
-                </AnimatedSection>
+                  <div className="space-y-3">
+                    <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Nature of Inquiry</label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-lg font-serif appearance-none"
+                    >
+                      <option value="">Select service</option>
+                      {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Reserved Date</label>
+                  <input
+                    name="eventDate"
+                    type="date"
+                    value={formData.eventDate}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-xl font-serif"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                    <label className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] font-bold">Notes / Vision</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={4}
+                      placeholder="Share the details of your visual dream..."
+                      className="w-full bg-transparent border-b border-[#3E2723]/20 py-4 focus:border-[#3E2723] outline-none transition-colors text-xl font-serif resize-none"
+                    ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#3E2723] text-[#FDFBFA] py-8 text-[10px] tracking-[0.4em] uppercase font-bold hover:bg-[#6D4C41] transition-all duration-1000 flex items-center justify-center gap-4 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Whispering in Silence...' : 'Initiate Connection'}
+                  {!isSubmitting && <Send className="w-3 h-3" />}
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Info Side */}
+          <div className="lg:col-span-5 space-y-16">
+            <div className="p-16 border border-[#3E2723]/10 space-y-12 h-full flex flex-col justify-center">
+              <h3 className="text-3xl font-serif italic text-[#3E2723]">The Studio.</h3>
+              
+              <div className="space-y-8">
+                <div className="flex gap-6 items-start">
+                  <MapPin className="w-5 h-5 text-[#6D4C41] mt-1" strokeWidth={1} />
+                  <div>
+                    <h4 className="text-[10px] tracking-[0.3em] font-bold uppercase mb-2">Location</h4>
+                    <p className="text-[#6D4C41] font-light">Jabalpur, Madhya Pradesh • Global</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <Phone className="w-5 h-5 text-[#6D4C41] mt-1" strokeWidth={1} />
+                  <div>
+                    <h4 className="text-[10px] tracking-[0.3em] font-bold uppercase mb-2">Direct</h4>
+                    <a href="tel:+918827917220" className="text-[#6D4C41] font-light hover:text-[#3E2723] transition-colors">+91 88279 17220</a>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <Mail className="w-5 h-5 text-[#6D4C41] mt-1" strokeWidth={1} />
+                  <div>
+                    <h4 className="text-[10px] tracking-[0.3em] font-bold uppercase mb-2">Electronic</h4>
+                    <a href="mailto:surajstudios999@gmail.com" className="text-[#6D4C41] font-light hover:text-[#3E2723] transition-colors">surajstudios999@gmail.com</a>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <Clock className="w-5 h-5 text-[#6D4C41] mt-1" strokeWidth={1} />
+                  <div>
+                    <h4 className="text-[10px] tracking-[0.3em] font-bold uppercase mb-2">Presence</h4>
+                    <p className="text-[#6D4C41] font-light">Mon — Sat / 10:00 — 19:00 IST</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-12 border-t border-[#3E2723]/10">
+                 <button 
+                  onClick={() => {
+                    window.open(`https://wa.me/918827917220?text=${encodeURIComponent('Hi! I would like to inquire about your luxury photography services.')}`, '_blank');
+                  }}
+                  className="w-full py-6 border border-[#3E2723] text-[10px] tracking-[0.3em] uppercase text-[#3E2723] font-bold hover:bg-[#3E2723] hover:text-[#FDFBFA] transition-all duration-1000"
+                 >
+                   WhatsApp Consult
+                 </button>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section className="py-20 px-4 bg-gray-900">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">Our <span className="text-amber-500">Location</span></h2>
-                <p className="text-gray-400 text-lg">Visit our studio in Jabalpur, Madhya Pradesh</p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={200}>
-              <div className="rounded-3xl overflow-hidden border border-gray-700 h-96">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58902.15658729971!2d79.90867922167969!3d23.181764000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ae35e8255555%3A0x6f3efc6f4d2c3e77!2sJabalpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Suraj Studio Location"
-                ></iframe>
-              </div>
-            </AnimatedSection>
-          </div>
+        {/* Map Section */}
+        <section className="mt-40 h-[60vh] grayscale-map filter contrast-125 opacity-70 hover:opacity-100 transition-opacity duration-[2s]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58902.15658729971!2d79.90867922167969!3d23.181764000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ae35e8255555%3A0x6f3efc6f4d2c3e77!2sJabalpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            title="Suraj Studio Location"
+          ></iframe>
         </section>
       </div>
-    </>
+    </div>
   );
 };

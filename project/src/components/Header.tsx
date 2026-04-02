@@ -27,7 +27,7 @@ export const Header = ({ onNavigate }: HeaderProps) => {
   // Sai Photo Inspired Nav Items
   const leftNav = [
     { label: 'Work', page: 'portfolio' },
-    { label: 'Gallery', page: 'portfolio' },
+    { label: 'Catalog', page: 'wedding-catalog' },
     { label: 'Films', page: 'portfolio' }
   ];
 

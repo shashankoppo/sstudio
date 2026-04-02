@@ -10,7 +10,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
     const tl = gsap.timeline({
       onComplete: () => {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
         onComplete();
       }
     });

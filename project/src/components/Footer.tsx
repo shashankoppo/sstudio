@@ -93,7 +93,9 @@ export const Footer = ({ onNavigate }: FooterProps) => {
         </div>
 
         <div className="border-t border-[#3E2723]/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#8D7B73] text-sm">&copy; {currentYear} Suraj Studio. All rights reserved.</p>
+          <p className="text-[#8D7B73] text-sm italic tracking-wide">
+            &copy; {currentYear} Suraj Studio. Site by <span className="text-[#3E2723] font-bold">Suraj Studio & elsxglobal</span>
+          </p>
           <div className="text-[#8D7B73] text-sm flex gap-6">
             <a href="#" className="hover:text-[#3E2723] transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-[#3E2723] transition-colors">Terms of Service</a>

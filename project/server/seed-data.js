@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 console.log('Seeding database with original content...');
 
 const portfolioItems = [
+    { title: 'The Eternal Vow', category: 'Weddings', description: 'Outdoor luxury wedding ceremony', imageUrl: '/assets/wedding/wedding-1.png' },
+    { title: 'Silent Affection', category: 'Weddings', description: 'Intimate wedding portraits', imageUrl: '/assets/wedding/wedding-2.png' },
+    { title: 'Golden Hour Grace', category: 'Weddings', description: 'Editorial bridal photography', imageUrl: '/assets/wedding/wedding-3.png' },
+    { title: 'Grandeur In Motion', category: 'Cinematic', description: 'Cinematic wedding film stills', imageUrl: '/assets/wedding/wedding-4.png' },
     { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg' },
     { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: 'https://images.pexels.com/photos/1690353/pexels-photo-1690353.jpeg' },
     { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg' },

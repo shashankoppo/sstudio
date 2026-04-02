@@ -19,7 +19,7 @@ try {
         const insert = db.prepare('INSERT INTO settings (key, value) VALUES (?, ?)');
         insert.run('site_title', 'Suraj Studio');
         insert.run('logo_url', ''); // Empty initially
-        insert.run('hero_bg_url', 'https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg');
+        insert.run('hero_bg_url', '/assets/wedding/hero.png');
         console.log('Default settings seeded.');
     }
 

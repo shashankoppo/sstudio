@@ -15,7 +15,7 @@ interface HomeProps {
 export const Home = ({ onNavigate }: HomeProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-  const [heroBg, setHeroBg] = useState('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920');
+  const [heroBg, setHeroBg] = useState('/assets/wedding/hero.png');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,37 +137,127 @@ export const Home = ({ onNavigate }: HomeProps) => {
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
         <div
-          className="absolute inset-0 z-0 scale-105 transform translate-y-[calc(var(--scroll-y,0)*0.5px)]"
+          className="absolute inset-0 z-0 scale-105 transform translate-y-[calc(var(--scroll-y,0)*0.5px)] will-change-transform"
           style={{
             backgroundImage: `url(${heroBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         >
-          <div className="absolute inset-0 bg-[#FDFBFA]/40 mix-blend-screen"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBFA]/20 via-transparent to-[#FDFBFA]"></div>
+          {/* Enhanced Overlay for Premium Feel */}
+          <div className="absolute inset-0 bg-[#3E2723]/20 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBFA]/30 via-transparent to-[#FDFBFA]"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center justify-center h-full w-full">
-          <div className="space-y-2 mb-10 overflow-hidden">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-[#3E2723] leading-[1.0] tracking-tight">
-              <div className="overflow-hidden"><div className="hero-title-line">Eternal</div></div>
-              <div className="overflow-hidden"><div className="hero-title-line italic text-[#6D4C41] font-light">Elegance</div></div>
-              <div className="overflow-hidden"><div className="hero-title-line">Captured</div></div>
+          <div className="space-y-4 mb-10 overflow-hidden">
+            <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-serif text-[#3E2723] leading-[0.9] tracking-tighter">
+              <div className="overflow-hidden"><div className="hero-title-line">Luxury</div></div>
+              <div className="overflow-hidden py-2"><div className="hero-title-line italic text-[#6D4C41] font-light">Weddings</div></div>
+              <div className="overflow-hidden"><div className="hero-title-line">Redefined</div></div>
             </h1>
           </div>
           
-          <p className="hero-subtitle text-lg md:text-xl text-[#6D4C41] max-w-2xl mx-auto font-light tracking-wide mb-14">
-            Curating visual poetry. We preserve your most cherished moments with an uncompromising editorial eye.
+          <p className="hero-subtitle text-xl md:text-2xl text-[#6D4C41] max-w-2xl mx-auto font-light tracking-widest mb-14 uppercase opacity-80">
+            Editorial Artistry for the Modern Couple
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <button
               onClick={() => onNavigate('portfolio')}
-              className="hero-btn border border-[#3E2723] bg-[#3E2723] text-[#FDFBFA] px-10 py-5 rounded-none uppercase tracking-[0.2em] text-xs font-medium hover:bg-transparent hover:text-[#3E2723] transition-all duration-500"
+              className="hero-btn group relative overflow-hidden border border-[#3E2723] bg-[#3E2723] text-[#FDFBFA] px-12 py-6 rounded-none uppercase tracking-[0.3em] text-[10px] font-bold hover:text-[#3E2723] transition-colors duration-700"
             >
-              Enter Portfolio
+              <span className="relative z-10">Explore Our World</span>
+              <div className="absolute inset-0 bg-[#FDFBFA] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-expo"></div>
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Wedding Catalog Section - Refined and Enhanced */}
+      <section className="py-40 px-6 bg-[#FDFBFA] overflow-hidden" id="wedding-catalog">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-32 text-center">
+            <h2 className="text-xs tracking-[0.5em] uppercase text-[#6D4C41] mb-8 font-semibold opacity-60">The Wedding Catalog</h2>
+            <h3 className="text-5xl md:text-8xl font-serif text-[#3E2723] leading-tight">Masterpieces of <br/><span className="italic font-light">Matrimony</span></h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+            {/* Main Featured Image */}
+            <div className="md:col-span-7 portfolio-item group">
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#F5F2EF]">
+                <img 
+                  src="/assets/wedding/wedding-1.png" 
+                  alt="Elegant Wedding Ceremony" 
+                  className="w-full h-full object-cover transition-transform duration-[1s] ease-out group-hover:scale-105 will-change-transform"
+                />
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              </div>
+              <div className="mt-8">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] mb-2">Ceremony • Outdoor Luxury</p>
+                <h4 className="text-3xl font-serif text-[#3E2723]">The Eternal Vow</h4>
+              </div>
+            </div>
+
+            {/* Side Images Grid */}
+            <div className="md:col-span-5 flex flex-col gap-20">
+              <div className="portfolio-item group">
+                <div className="relative aspect-[1/1] overflow-hidden bg-[#F5F2EF]">
+                  <img 
+                    src="/assets/wedding/wedding-2.png" 
+                    alt="Wedding Detail" 
+                    className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
+                  />
+                </div>
+                <div className="mt-6">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] mb-2">Portraits • Intimate</p>
+                  <h4 className="text-2xl font-serif text-[#3E2723]">Silent Affection</h4>
+                </div>
+              </div>
+
+              <div className="portfolio-item group md:ml-12">
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F2EF] border-l-[20px] border-white shadow-2xl">
+                  <img 
+                    src="/assets/wedding/wedding-3.png" 
+                    alt="Candid Wedding Moment" 
+                    className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  />
+                </div>
+                <div className="mt-6">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] mb-2">Editorial • Bridal</p>
+                  <h4 className="text-2xl font-serif text-[#3E2723]">Golden Hour Grace</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-32">
+             <div className="portfolio-item group">
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#F5F2EF]">
+                  <img 
+                    src="/assets/wedding/wedding-4.png" 
+                    alt="Grand Celebration" 
+                    className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  />
+                </div>
+                <div className="mt-8">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[#6D4C41] mb-2">Cinematography • Stills</p>
+                  <h4 className="text-3xl font-serif text-[#3E2723]">Grandeur In Motion</h4>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="max-w-sm text-center">
+                  <p className="text-[#6D4C41] leading-relaxed font-light mb-10 italic text-lg">
+                    "Every wedding is a new canvas. We don't just take photos; we weave a visual tapestry that captures the depth of your soul's journey together."
+                  </p>
+                  <button 
+                    onClick={() => onNavigate('contact')}
+                    className="text-[#3E2723] uppercase tracking-[0.4em] text-[10px] font-bold border-b border-[#3E2723] pb-2 hover:opacity-50 transition-opacity"
+                  >
+                    View Entire Collection
+                  </button>
+                </div>
+              </div>
           </div>
         </div>
       </section>
