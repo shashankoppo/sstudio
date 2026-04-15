@@ -1,9 +1,16 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dbPath = path.join(__dirname, 'data.db');
+const dataDir = path.join(__dirname, 'data');
+
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+const dbPath = path.join(dataDir, 'data.db');
 
 const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
@@ -54,6 +61,32 @@ const initializeDatabase = () => {
       email TEXT UNIQUE NOT NULL,
       password TEXT NOT NULL,
       created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS invoices (
+      id TEXT PRIMARY KEY,
+      invoice_number TEXT UNIQUE NOT NULL,
+      client_name TEXT NOT NULL,
+      client_email TEXT,
+      client_phone TEXT,
+      client_address TEXT,
+      status TEXT DEFAULT 'draft',
+      total_amount REAL DEFAULT 0,
+      tax_amount REAL DEFAULT 0,
+      discount_amount REAL DEFAULT 0,
+      notes TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS invoice_items (
+      id TEXT PRIMARY KEY,
+      invoice_id TEXT NOT NULL,
+      description TEXT NOT NULL,
+      quantity REAL DEFAULT 1,
+      unit_price REAL DEFAULT 0,
+      amount REAL DEFAULT 0,
+      FOREIGN KEY (invoice_id) REFERENCES invoices(id) ON DELETE CASCADE
     );
   `);
 };

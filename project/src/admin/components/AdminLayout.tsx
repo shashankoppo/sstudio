@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Users, FolderOpen, Tag, MessageSquare, LogOut, Settings } from 'lucide-react';
+import { Users, FolderOpen, Tag, MessageSquare, LogOut, Settings, Receipt } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 export function AdminLayout() {
@@ -76,6 +76,17 @@ export function AdminLayout() {
           >
             <Settings className="w-5 h-5 mr-3" />
             Settings
+          </Link>
+
+          <Link
+            to="/admin/invoices"
+            className={`flex items-center px-4 py-3 mb-2 rounded-lg transition-colors ${isActive('/admin/invoices')
+              ? 'bg-blue-50 text-blue-700'
+              : 'text-gray-700 hover:bg-gray-100'
+              }`}
+          >
+            <Receipt className="w-5 h-5 mr-3" />
+            Invoices
           </Link>
         </nav>
 

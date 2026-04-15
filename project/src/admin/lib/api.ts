@@ -227,4 +227,60 @@ export const api = {
       if (!res.ok) throw new Error('Delete failed');
     },
   },
+
+  invoices: {
+    list: async () => {
+      const res = await fetch(`${API_URL}/invoices`, {
+        headers: { 'Authorization': `Bearer ${authToken}` },
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      return data;
+    },
+
+    get: async (id: string) => {
+      const res = await fetch(`${API_URL}/invoices/${id}`, {
+        headers: { 'Authorization': `Bearer ${authToken}` },
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      return data;
+    },
+
+    create: async (invoice: any) => {
+      const res = await fetch(`${API_URL}/invoices`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(invoice),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      return data;
+    },
+
+    update: async (id: string, updates: any) => {
+      const res = await fetch(`${API_URL}/invoices/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(updates),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      return data;
+    },
+
+    delete: async (id: string) => {
+      const res = await fetch(`${API_URL}/invoices/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${authToken}` },
+      });
+      if (!res.ok) throw new Error('Delete failed');
+    },
+  },
 };

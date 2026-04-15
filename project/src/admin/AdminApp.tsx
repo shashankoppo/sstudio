@@ -8,6 +8,8 @@ import { Categories } from './pages/admin/Categories';
 import { Portfolio } from './pages/admin/Portfolio';
 import { Testimonials } from './pages/admin/Testimonials';
 import { Settings } from './pages/admin/Settings';
+import { Invoices } from './pages/admin/Invoices';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="testimonials" element={<Testimonials />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="invoices" element={<Invoices />} />
         </Route>
       </Routes>
     </AuthProvider>

@@ -35,3 +35,29 @@ export interface Testimonial {
   location?: string;
   created_at: string;
 }
+
+export interface InvoiceItem {
+  id: string;
+  invoice_id: string;
+  description: string;
+  quantity: number;
+  unit_price: number;
+  amount: number;
+}
+
+export interface Invoice {
+  id: string;
+  invoice_number: string;
+  client_name: string;
+  client_email?: string;
+  client_phone?: string;
+  client_address?: string;
+  status: 'draft' | 'sent' | 'paid' | 'cancelled';
+  total_amount: number;
+  tax_amount: number;
+  discount_amount: number;
+  notes?: string;
+  created_at: string;
+  updated_at: string;
+  items?: InvoiceItem[];
+}

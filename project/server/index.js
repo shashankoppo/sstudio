@@ -7,6 +7,8 @@ import { leadsRouter } from './routes/leads.js';
 import { portfolioRouter } from './routes/portfolio.js';
 import { testimonialsRouter } from './routes/testimonials.js';
 import { settingsRouter } from './routes/settings.js';
+import { invoicesRouter } from './routes/invoices.js';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -41,6 +43,8 @@ app.use('/api/leads', leadsRouter);
 app.use('/api/portfolio', portfolioRouter);
 app.use('/api/testimonials', testimonialsRouter);
 app.use('/api/settings', settingsRouter);
+app.use('/api/invoices', invoicesRouter);
+
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {

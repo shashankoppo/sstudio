@@ -6,16 +6,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+.env
+dist
 node_modules
+.bolt
+
+# SQLite
+server/data/*.db*
+server/data.db*
+
+# OS files
+.DS_Store
+Thumbs.db
+
 *.local
 
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.env
