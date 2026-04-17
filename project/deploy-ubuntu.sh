@@ -33,8 +33,7 @@ fi
 
 # 4. Build and Start the Application
 echo "🏗️ Building and pulling containers..."
-sudo docker-compose down
-sudo docker-compose build --no-cache
-sudo docker-compose up -d
+sudo docker compose down
+sudo docker compose up -d --build
 
-echo "🎉 Deployment Complete! Your site is running on port 80."
+echo "🎉 Deployment Complete! Your site is running on port 5959."

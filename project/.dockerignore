@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.env
+server/data
+npm-debug.log
+docker-compose.yml
+Dockerfile
+.bolt

@@ -22,8 +22,9 @@ The project includes a `netlify.toml` file configured for single-page applicatio
 ### Docker (Full Stack)
 Containerize the entire application (Vite Frontend + Node.js Backend) using Docker.
 ```bash
-docker-compose up -d
+docker compose up -d --build
 ```
+The site will be available at `http://localhost:5959`
 
 ### Ubuntu VPS
 A dedicated deployment script is provided for quick setup on an Ubuntu server.
