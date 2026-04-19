@@ -8,6 +8,7 @@ import { portfolioRouter } from './routes/portfolio.js';
 import { testimonialsRouter } from './routes/testimonials.js';
 import { settingsRouter } from './routes/settings.js';
 import { invoicesRouter } from './routes/invoices.js';
+import { ensureAdminUser } from './create-admin.js';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 
 try {
   initializeDatabase();
+  ensureAdminUser();
   console.log('Database initialized successfully');
 } catch (error) {
   console.error('Failed to initialize database:', error);
