@@ -9,16 +9,16 @@ const portfolioItems = [
     { title: 'Silent Affection', category: 'Weddings', description: 'Intimate wedding portraits', imageUrl: '/assets/wedding/wedding-2.jpg' },
     { title: 'Golden Hour Grace', category: 'Weddings', description: 'Editorial bridal photography', imageUrl: '/assets/wedding/wedding-3.jpg' },
     { title: 'Grandeur In Motion', category: 'Cinematic', description: 'Cinematic wedding film stills', imageUrl: '/assets/wedding/wedding-4.jpg' },
-    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-1.jpg' },
-    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-2.jpg' },
-    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-3.jpg' },
-    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-4.jpg' },
-    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: '/assets/wedding/hero.jpg' },
-    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-1.jpg' },
-    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-2.jpg' },
-    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-3.jpg' },
-    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-4.jpg' },
-    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/hero.jpg' }
+    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-5.jpg' },
+    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-6.jpg' },
+    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-7.jpg' },
+    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-8.jpg' },
+    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: '/assets/wedding/wedding-9.jpg' },
+    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-10.jpg' },
+    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-11.jpg' },
+    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-12.jpg' },
+    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-13.jpg' },
+    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/wedding-14.jpg' }
 ];
 
 const testimonials = [
