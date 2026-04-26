@@ -9,7 +9,7 @@ interface SEOProps {
   url?: string;
 }
 
-export const SEO = ({ title, description, keywords, schema, image = 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg', url = 'https://surajstudios.com' }: SEOProps) => {
+export const SEO = ({ title, description, keywords, schema, image = '/assets/wedding/hero.png', url = 'https://surajstudios.com' }: SEOProps) => {
   useEffect(() => {
     document.title = title;
 

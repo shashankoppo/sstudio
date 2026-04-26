@@ -64,7 +64,7 @@ export const Services = ({ onNavigate }: ServicesProps) => {
                <div className={`md:col-span-6 lg:col-span-7 order-1 ${idx % 2 !== 0 ? 'md:order-2' : ''}`}>
                  <div className="relative aspect-[16/9] overflow-hidden bg-[#F5F2EF] group">
                     <img 
-                        src={`https://images.pexels.com/photos/${idx === 0 ? '1456613' : idx === 1 ? '3481284' : idx === 2 ? '3052361' : '3171837'}/pexels-photo-${idx === 0 ? '1456613' : idx === 1 ? '3481284' : idx === 2 ? '3052361' : '3171837'}.jpeg?auto=compress&cs=tinysrgb&w=1200`} 
+                        src={`/assets/wedding/wedding-${(idx % 4) + 1}.png`} 
                         alt={service.title} 
                         className="w-full h-full object-cover grayscale transition-all duration-[2s] ease-out group-hover:scale-105 group-hover:grayscale-0 will-change-transform"
                     />

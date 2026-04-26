@@ -1,12 +1,12 @@
 export const portfolioItems = [
-  { id: '1', title: 'Royal Wedding Extravaganza', category: 'Weddings' as const, description: 'Cinematic wedding with grand celebrations', imageUrl: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg', altText: 'Royal wedding photography' },
-  { id: '2', title: 'Pre-Wedding in Swiss Alps', category: 'Weddings' as const, description: 'Romantic pre-wedding in alpine landscapes', imageUrl: 'https://images.pexels.com/photos/1690353/pexels-photo-1690353.jpeg', altText: 'Pre-wedding photography' },
-  { id: '3', title: 'Fashion Brand Lookbook', category: 'Fashion' as const, description: 'Professional fashion photography', imageUrl: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg', altText: 'Fashion photography' },
-  { id: '4', title: 'Corporate Gala Evening', category: 'Events' as const, description: 'Corporate event photography', imageUrl: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg', altText: 'Corporate event' },
-  { id: '5', title: 'Product Photography Portfolio', category: 'Commercial' as const, description: 'E-commerce product photography', imageUrl: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg', altText: 'Product photography' },
-  { id: '6', title: 'Cinematic Wedding Film', category: 'Cinematic' as const, description: 'Award-winning cinematic video', imageUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg', altText: 'Wedding film' },
-  { id: '7', title: 'Destination Wedding - Bali', category: 'Weddings' as const, description: 'Exotic destination wedding', imageUrl: 'https://images.pexels.com/photos/2078063/pexels-photo-2078063.jpeg', altText: 'Destination wedding' },
-  { id: '8', title: 'Model Portfolio Session', category: 'Fashion' as const, description: 'Professional model portfolio', imageUrl: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg', altText: 'Model portfolio' },
-  { id: '9', title: 'Maternity Beauty Shoot', category: 'Events' as const, description: 'Elegant maternity photography', imageUrl: 'https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg', altText: 'Maternity shoot' },
-  { id: '10', title: 'Drone Wedding Cinematography', category: 'Cinematic' as const, description: 'Aerial wedding cinematography', imageUrl: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg', altText: 'Drone photography' }
+  { id: '1', title: 'Royal Wedding Extravaganza', category: 'Weddings' as const, description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-1.png', altText: 'Royal wedding photography' },
+  { id: '2', title: 'Pre-Wedding in Swiss Alps', category: 'Weddings' as const, description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-2.png', altText: 'Pre-wedding photography' },
+  { id: '3', title: 'Fashion Brand Lookbook', category: 'Fashion' as const, description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-3.png', altText: 'Fashion photography' },
+  { id: '4', title: 'Corporate Gala Evening', category: 'Events' as const, description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-4.png', altText: 'Corporate event' },
+  { id: '5', title: 'Product Photography Portfolio', category: 'Commercial' as const, description: 'E-commerce product photography', imageUrl: '/assets/wedding/hero.png', altText: 'Product photography' },
+  { id: '6', title: 'Cinematic Wedding Film', category: 'Cinematic' as const, description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-1.png', altText: 'Wedding film' },
+  { id: '7', title: 'Destination Wedding - Bali', category: 'Weddings' as const, description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-2.png', altText: 'Destination wedding' },
+  { id: '8', title: 'Model Portfolio Session', category: 'Fashion' as const, description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-3.png', altText: 'Model portfolio' },
+  { id: '9', title: 'Maternity Beauty Shoot', category: 'Events' as const, description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-4.png', altText: 'Maternity shoot' },
+  { id: '10', title: 'Drone Wedding Cinematography', category: 'Cinematic' as const, description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/hero.png', altText: 'Drone photography' }
 ];

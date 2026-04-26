@@ -9,16 +9,16 @@ const portfolioItems = [
     { title: 'Silent Affection', category: 'Weddings', description: 'Intimate wedding portraits', imageUrl: '/assets/wedding/wedding-2.png' },
     { title: 'Golden Hour Grace', category: 'Weddings', description: 'Editorial bridal photography', imageUrl: '/assets/wedding/wedding-3.png' },
     { title: 'Grandeur In Motion', category: 'Cinematic', description: 'Cinematic wedding film stills', imageUrl: '/assets/wedding/wedding-4.png' },
-    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg' },
-    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: 'https://images.pexels.com/photos/1690353/pexels-photo-1690353.jpeg' },
-    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg' },
-    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg' },
-    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg' },
-    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg' },
-    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: 'https://images.pexels.com/photos/2078063/pexels-photo-2078063.jpeg' },
-    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg' },
-    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: 'https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg' },
-    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg' }
+    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-1.png' },
+    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-2.png' },
+    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-3.png' },
+    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-4.png' },
+    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: '/assets/wedding/hero.png' },
+    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-1.png' },
+    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-2.png' },
+    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-3.png' },
+    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-4.png' },
+    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/hero.png' }
 ];
 
 const testimonials = [
