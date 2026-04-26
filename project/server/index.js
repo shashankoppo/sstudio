@@ -11,6 +11,7 @@ import { invoicesRouter } from './routes/invoices.js';
 import { ensureAdminUser } from './create-admin.js';
 import { migrateSettings } from './migrate-settings.js';
 import { seedDatabase } from './seed-data.js';
+import { runJpgMigration } from './migrate-jpg.js';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,6 +38,7 @@ try {
   initializeDatabase();
   migrateSettings();
   seedDatabase();
+  runJpgMigration();
   ensureAdminUser();
   console.log('Database initialized successfully');
 } catch (error) {
