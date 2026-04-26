@@ -1,8 +1,8 @@
-
 import { db } from './db.js';
 import { v4 as uuidv4 } from 'uuid';
 
-console.log('Seeding database with original content...');
+export function seedDatabase() {
+    console.log('Seeding database with original content...');
 
 const portfolioItems = [
     { title: 'The Eternal Vow', category: 'Weddings', description: 'Outdoor luxury wedding ceremony', imageUrl: '/assets/wedding/wedding-1.png' },
@@ -90,4 +90,5 @@ try {
 
 } catch (error) {
     console.error('Seeding failed:', error);
+}
 }

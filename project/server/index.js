@@ -9,6 +9,8 @@ import { testimonialsRouter } from './routes/testimonials.js';
 import { settingsRouter } from './routes/settings.js';
 import { invoicesRouter } from './routes/invoices.js';
 import { ensureAdminUser } from './create-admin.js';
+import { migrateSettings } from './migrate-settings.js';
+import { seedDatabase } from './seed-data.js';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -33,6 +35,8 @@ app.use((req, res, next) => {
 
 try {
   initializeDatabase();
+  migrateSettings();
+  seedDatabase();
   ensureAdminUser();
   console.log('Database initialized successfully');
 } catch (error) {
