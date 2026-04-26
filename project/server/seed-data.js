@@ -5,20 +5,20 @@ export function seedDatabase() {
     console.log('Seeding database with original content...');
 
 const portfolioItems = [
-    { title: 'The Eternal Vow', category: 'Weddings', description: 'Outdoor luxury wedding ceremony', imageUrl: '/assets/wedding/wedding-1.png' },
-    { title: 'Silent Affection', category: 'Weddings', description: 'Intimate wedding portraits', imageUrl: '/assets/wedding/wedding-2.png' },
-    { title: 'Golden Hour Grace', category: 'Weddings', description: 'Editorial bridal photography', imageUrl: '/assets/wedding/wedding-3.png' },
-    { title: 'Grandeur In Motion', category: 'Cinematic', description: 'Cinematic wedding film stills', imageUrl: '/assets/wedding/wedding-4.png' },
-    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-1.png' },
-    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-2.png' },
-    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-3.png' },
-    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-4.png' },
-    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: '/assets/wedding/hero.png' },
-    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-1.png' },
-    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-2.png' },
-    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-3.png' },
-    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-4.png' },
-    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/hero.png' }
+    { title: 'The Eternal Vow', category: 'Weddings', description: 'Outdoor luxury wedding ceremony', imageUrl: '/assets/wedding/wedding-1.jpg' },
+    { title: 'Silent Affection', category: 'Weddings', description: 'Intimate wedding portraits', imageUrl: '/assets/wedding/wedding-2.jpg' },
+    { title: 'Golden Hour Grace', category: 'Weddings', description: 'Editorial bridal photography', imageUrl: '/assets/wedding/wedding-3.jpg' },
+    { title: 'Grandeur In Motion', category: 'Cinematic', description: 'Cinematic wedding film stills', imageUrl: '/assets/wedding/wedding-4.jpg' },
+    { title: 'Royal Wedding Extravaganza', category: 'Weddings', description: 'Cinematic wedding with grand celebrations', imageUrl: '/assets/wedding/wedding-1.jpg' },
+    { title: 'Pre-Wedding in Swiss Alps', category: 'Weddings', description: 'Romantic pre-wedding in alpine landscapes', imageUrl: '/assets/wedding/wedding-2.jpg' },
+    { title: 'Fashion Brand Lookbook', category: 'Fashion', description: 'Professional fashion photography', imageUrl: '/assets/wedding/wedding-3.jpg' },
+    { title: 'Corporate Gala Evening', category: 'Events', description: 'Corporate event photography', imageUrl: '/assets/wedding/wedding-4.jpg' },
+    { title: 'Product Photography Portfolio', category: 'Commercial', description: 'E-commerce product photography', imageUrl: '/assets/wedding/hero.jpg' },
+    { title: 'Cinematic Wedding Film', category: 'Cinematic', description: 'Award-winning cinematic video', imageUrl: '/assets/wedding/wedding-1.jpg' },
+    { title: 'Destination Wedding - Bali', category: 'Weddings', description: 'Exotic destination wedding', imageUrl: '/assets/wedding/wedding-2.jpg' },
+    { title: 'Model Portfolio Session', category: 'Fashion', description: 'Professional model portfolio', imageUrl: '/assets/wedding/wedding-3.jpg' },
+    { title: 'Maternity Beauty Shoot', category: 'Events', description: 'Elegant maternity photography', imageUrl: '/assets/wedding/wedding-4.jpg' },
+    { title: 'Drone Wedding Cinematography', category: 'Cinematic', description: 'Aerial wedding cinematography', imageUrl: '/assets/wedding/hero.jpg' }
 ];
 
 const testimonials = [

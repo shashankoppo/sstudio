@@ -83,7 +83,7 @@ export const About = ({ onNavigate }: AboutProps) => {
 
         <div className="about-image relative h-[60vh] md:h-[80vh] mb-32 overflow-hidden rounded-none">
           <img
-            src="/assets/wedding/hero.png"
+            src="/assets/wedding/hero.jpg"
             alt="Suraj Studio Team capturing a moment"
             className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-[2s]"
           />
@@ -104,10 +104,10 @@ export const About = ({ onNavigate }: AboutProps) => {
           </div>
           <div className="content-block grid grid-cols-2 gap-8">
             <div className="aspect-square overflow-hidden bg-[#F0EAE1]">
-              <img src="/assets/wedding/wedding-1.png" className="w-full h-full object-cover filter grayscale hover:scale-105 transition-transform duration-1000" alt="Editorial Shoot" />
+              <img src="/assets/wedding/wedding-1.jpg" className="w-full h-full object-cover filter grayscale hover:scale-105 transition-transform duration-1000" alt="Editorial Shoot" />
             </div>
             <div className="aspect-square overflow-hidden bg-[#F0EAE1] mt-12">
-              <img src="/assets/wedding/wedding-2.png" className="w-full h-full object-cover filter grayscale hover:scale-105 transition-transform duration-1000" alt="Cinematic Process" />
+              <img src="/assets/wedding/wedding-2.jpg" className="w-full h-full object-cover filter grayscale hover:scale-105 transition-transform duration-1000" alt="Cinematic Process" />
             </div>
           </div>
         </div>

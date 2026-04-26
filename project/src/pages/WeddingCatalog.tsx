@@ -11,10 +11,10 @@ interface WeddingCatalogProps {
 }
 
 const weddingImages = [
-  { url: '/assets/wedding/wedding-1.png', title: 'The Eternal Vow', category: 'Ceremony', description: 'Captured in the soft embrace of twilight, this moment represents the pinnacle of marital commitment.' },
-  { url: '/assets/wedding/wedding-2.png', title: 'Silent Affection', category: 'Portrait', description: 'A quiet exchange that speaks volumes of the bond shared between two souls.' },
-  { url: '/assets/wedding/wedding-3.png', title: 'Golden Hour Grace', category: 'Editorial', description: 'The interplay of light and shadow highlights the intricate details of bridal elegance.' },
-  { url: '/assets/wedding/wedding-4.png', title: 'Grandeur In Motion', category: 'Cinematography', description: 'A cinematic perspective on a celebration that transcends time.' }
+  { url: '/assets/wedding/wedding-1.jpg', title: 'The Eternal Vow', category: 'Ceremony', description: 'Captured in the soft embrace of twilight, this moment represents the pinnacle of marital commitment.' },
+  { url: '/assets/wedding/wedding-2.jpg', title: 'Silent Affection', category: 'Portrait', description: 'A quiet exchange that speaks volumes of the bond shared between two souls.' },
+  { url: '/assets/wedding/wedding-3.jpg', title: 'Golden Hour Grace', category: 'Editorial', description: 'The interplay of light and shadow highlights the intricate details of bridal elegance.' },
+  { url: '/assets/wedding/wedding-4.jpg', title: 'Grandeur In Motion', category: 'Cinematography', description: 'A cinematic perspective on a celebration that transcends time.' }
 ];
 
 export const WeddingCatalog = ({ onNavigate }: WeddingCatalogProps) => {

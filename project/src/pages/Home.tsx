@@ -15,7 +15,7 @@ interface HomeProps {
 export const Home = ({ onNavigate }: HomeProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-  const [heroBg, setHeroBg] = useState('/assets/wedding/hero.png');
+  const [heroBg, setHeroBg] = useState('/assets/wedding/hero.jpg');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -187,7 +187,7 @@ export const Home = ({ onNavigate }: HomeProps) => {
             <div className="md:col-span-7 portfolio-item group">
               <div className="relative aspect-[4/5] overflow-hidden bg-[#F5F2EF]">
                 <img 
-                  src="/assets/wedding/wedding-1.png" 
+                  src="/assets/wedding/wedding-1.jpg" 
                   alt="Elegant Wedding Ceremony" 
                   className="w-full h-full object-cover transition-transform duration-[1s] ease-out group-hover:scale-105 will-change-transform"
                 />
@@ -204,7 +204,7 @@ export const Home = ({ onNavigate }: HomeProps) => {
               <div className="portfolio-item group">
                 <div className="relative aspect-[1/1] overflow-hidden bg-[#F5F2EF]">
                   <img 
-                    src="/assets/wedding/wedding-2.png" 
+                    src="/assets/wedding/wedding-2.jpg" 
                     alt="Wedding Detail" 
                     className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
                   />
@@ -218,7 +218,7 @@ export const Home = ({ onNavigate }: HomeProps) => {
               <div className="portfolio-item group md:ml-12">
                 <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F2EF] border-l-[20px] border-white shadow-2xl">
                   <img 
-                    src="/assets/wedding/wedding-3.png" 
+                    src="/assets/wedding/wedding-3.jpg" 
                     alt="Candid Wedding Moment" 
                     className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                   />
@@ -235,7 +235,7 @@ export const Home = ({ onNavigate }: HomeProps) => {
              <div className="portfolio-item group">
                 <div className="relative aspect-[16/9] overflow-hidden bg-[#F5F2EF]">
                   <img 
-                    src="/assets/wedding/wedding-4.png" 
+                    src="/assets/wedding/wedding-4.jpg" 
                     alt="Grand Celebration" 
                     className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                   />
